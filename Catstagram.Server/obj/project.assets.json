@@ -2274,11 +2274,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Plamen\\Desktop\\Catstagram-ASP.NET-Core-Angular\\Catstagram.Server\\Catstagram.Server.csproj",
+      "projectUniqueName": "C:\\Users\\Plamen\\Desktop\\Catstagram-ASP.NET-Core-Angular\\Catstagram-ASP.NET-Core-Angular\\Catstagram.Server\\Catstagram.Server.csproj",
       "projectName": "Catstagram.Server",
-      "projectPath": "C:\\Users\\Plamen\\Desktop\\Catstagram-ASP.NET-Core-Angular\\Catstagram.Server\\Catstagram.Server.csproj",
+      "projectPath": "C:\\Users\\Plamen\\Desktop\\Catstagram-ASP.NET-Core-Angular\\Catstagram-ASP.NET-Core-Angular\\Catstagram.Server\\Catstagram.Server.csproj",
       "packagesPath": "C:\\Users\\Plamen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Plamen\\Desktop\\Catstagram-ASP.NET-Core-Angular\\Catstagram.Server\\obj\\",
+      "outputPath": "C:\\Users\\Plamen\\Desktop\\Catstagram-ASP.NET-Core-Angular\\Catstagram-ASP.NET-Core-Angular\\Catstagram.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

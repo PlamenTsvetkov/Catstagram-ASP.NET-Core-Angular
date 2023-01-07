@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CESXxX2EHD6XBsaLxUOD5D9/BZ+ckrlXqtxmjSH7l2XyxzcdaC0sdrhtj+u8Oqfdw0veCmLqLOExBdvvLERIkg==",
+  "dgSpecHash": "ncINaAAsDi8sRB6Hi9WXEsV9tpffqrKG022a+VHfmhlUhccWpOueiJA220TM/RBb7XJC+UwJpUtFdkg+yzcR5Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Plamen\\Desktop\\Catstagram-ASP.NET-Core-Angular\\Catstagram.Server\\Catstagram.Server.csproj",
+  "projectFilePath": "C:\\Users\\Plamen\\Desktop\\Catstagram-ASP.NET-Core-Angular\\Catstagram-ASP.NET-Core-Angular\\Catstagram.Server\\Catstagram.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Plamen\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Plamen\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.12\\microsoft.aspnetcore.authentication.jwtbearer.6.0.12.nupkg.sha512",
