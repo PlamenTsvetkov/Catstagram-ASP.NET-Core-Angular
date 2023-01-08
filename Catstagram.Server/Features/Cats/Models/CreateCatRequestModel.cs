@@ -1,4 +1,4 @@
-﻿namespace Catstagram.Server.Models.Cats
+﻿namespace Catstagram.Server.Features.Cats.Models
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -6,7 +6,6 @@
 
     public class CreateCatRequestModel
     {
-        [Required]
         [MaxLength(MaxDescriptionLength)]
         public string Description { get; set; }
 

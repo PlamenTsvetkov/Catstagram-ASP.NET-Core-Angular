@@ -128,3 +128,8 @@ C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-
 C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-Angular\Catstagram.Server\obj\Debug\net6.0\Catstagram.Server.pdb
 C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-Angular\Catstagram.Server\obj\Debug\net6.0\Catstagram.Server.genruntimeconfig.cache
 C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-Angular\Catstagram.Server\obj\Debug\net6.0\ref\Catstagram.Server.dll
+C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-Angular\Catstagram.Server\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-Angular\Catstagram.Server\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-Angular\Catstagram.Server\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-Angular\Catstagram.Server\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Plamen\Desktop\Catstagram-ASP.NET-Core-Angular\Catstagram-ASP.NET-Core-Angular\Catstagram.Server\obj\Debug\net6.0\Catstagram.Server.MvcApplicationPartsAssemblyInfo.cs
