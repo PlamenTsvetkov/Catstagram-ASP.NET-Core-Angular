@@ -24,6 +24,8 @@
 
         [HttpPost]
         [Route(nameof(Register))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Register(RegisterRequestModel model)
         {
             var user = new User
@@ -44,6 +46,7 @@
 
         [HttpPost]
         [Route(nameof(Login))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<object>> Login(LoginRequestModel model)
         {
             var user = await userManager.FindByNameAsync(model.UserName);

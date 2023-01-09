@@ -36,12 +36,7 @@ var app = builder.Build();
 //app.UseStaticFiles();
 
 app
-    .UseSwagger()
-    .UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "My Catstagram API");
-        options.RoutePrefix = string.Empty;
-    })
+    .UseSwaggerUI()
     .UseRouting()
     .UseCors(options => options
             .AllowAnyOrigin()

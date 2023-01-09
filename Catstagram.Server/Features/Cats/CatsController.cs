@@ -5,6 +5,7 @@
     using Catstagram.Server.Infrastructure.Extensions;
     using Catstagram.Server.Features.Cats.Models;
     using Microsoft.AspNetCore.Authorization;
+    using System.Reflection.Metadata.Ecma335;
 
     public class CatsController : ApiController
     {
@@ -14,8 +15,19 @@
         {
             this.catService = catService;
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IEnumerable<CatListingResponseModel>> Mine()
+        {
+            var userId = this.User.GetId();
+
+            return await this.catService.ByUser(userId);
+        }
+
         [Authorize]
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult> Create(CreateCatRequestModel model)
         {
             var userId = User.GetId();
