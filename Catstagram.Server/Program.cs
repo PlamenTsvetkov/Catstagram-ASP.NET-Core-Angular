@@ -13,7 +13,7 @@ builder.Services.AddDbContext<CatstagramDbContext>(options =>options
                 .AddJwtAuthentication(builder.Services.GetApplicationSettings(builder.Configuration))
                 .AddApplicationServices()
                 .AddSwagger()
-                .AddControllers();
+                .AddApiControllers();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

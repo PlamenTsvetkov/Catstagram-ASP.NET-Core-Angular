@@ -77,5 +77,11 @@
                                              }
                                              );
                                      });
+
+        public static void  AddApiControllers(this IServiceCollection services)
+        => services
+            .AddControllers(option =>
+                                     option
+                                     .Filters.Add<ModelOrNotFoundActionFilter>());
     }
 }

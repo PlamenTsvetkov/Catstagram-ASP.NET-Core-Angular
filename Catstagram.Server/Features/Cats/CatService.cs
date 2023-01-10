@@ -33,14 +33,27 @@
             return cat.Id;
         }
 
-        public async Task<IEnumerable<CatListingResponseModel>> ByUser(string userId)
+        public async Task<IEnumerable<CatListingServiceModel>> ByUser(string userId)
        => await this.data.Cats
             .Where(c => c.UserId == userId)
-            .Select(c => new CatListingResponseModel
+            .Select(c => new CatListingServiceModel
             {
                 Id = c.Id,
                 ImageUrl = c.ImageUrl,
             })
             .ToListAsync();
+
+        public async Task<CatDetailsServiceModel> Details(int catId)
+        => await this.data
+            .Cats
+            .Where(c => c.Id == catId)
+            .Select(c => new CatDetailsServiceModel
+            {
+                Description = c.Description,
+                ImageUrl = c.ImageUrl,
+                UserId = c.UserId,
+                UserUserName = c.User.UserName
+            })
+            .FirstOrDefaultAsync();
     }
 }

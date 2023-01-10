@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class CatListingResponseModel
+    public class CatListingServiceModel
     {
         public int Id { get; set; }
 
