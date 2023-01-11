@@ -55,12 +55,9 @@
             })
             .FirstOrDefaultAsync();
 
-        public async Task<bool> Update(int id, string description, string userId)
+        public async Task<bool> Update(int catId, string description, string userId)
         {
-            var cat = await this.data
-                .Cats
-                .Where(c => c.Id == id && c.UserId == userId)
-                .FirstOrDefaultAsync();
+            var cat = await this.ByIdAndByUserId(catId, userId);
 
             if (cat==null)
             {
@@ -73,5 +70,27 @@
 
             return true;
         }
+
+        public async Task<bool> Delete(int catId, string userId)
+        {
+            var cat = await this.ByIdAndByUserId(catId, userId);
+
+            if (cat == null)
+            {
+                return false;
+            }
+
+            this.data.Cats.Remove(cat);
+
+            await this.data.SaveChangesAsync();
+
+            return true;
+        }
+
+        private async Task<Cat> ByIdAndByUserId(int catId, string userId)
+        => await this.data
+               .Cats
+               .Where(c => c.Id == catId && c.UserId == userId)
+               .FirstOrDefaultAsync();
     }
 }

@@ -11,5 +11,7 @@
         public Task<CatDetailsServiceModel> Details(int catId);
 
         public Task<bool> Update(int id, string description, string userId);
+
+        public Task<bool> Delete(int catId,string userId);
     }
 }

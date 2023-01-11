@@ -6,6 +6,8 @@
     using Catstagram.Server.Features.Cats.Models;
     using Microsoft.AspNetCore.Authorization;
 
+
+    using static Infrastructure.WebConstants;
     [Authorize]
     public class CatsController : ApiController
     {
@@ -26,7 +28,7 @@
         }
 
         [HttpGet]
-        [Route("{catId}")]
+        [Route(Id)]
         public async Task<ActionResult<CatDetailsServiceModel>> Details(int catId)
         => await this.catService.Details(catId);
 
@@ -53,6 +55,23 @@
                 userId);
 
             if (!updated)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+
+        }
+
+        [HttpDelete]
+        [Route(Id)]
+        public async Task<ActionResult> Delete(int catId)
+        {
+            var userId = this.User.GetId();
+
+            var deleted = await this.catService.Delete(catId, userId);
+
+            if (!deleted)
             {
                 return BadRequest();
             }
