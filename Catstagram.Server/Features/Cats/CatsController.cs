@@ -16,7 +16,7 @@
             this.catService = catService;
         }
 
-        
+
         [HttpGet]
         public async Task<IEnumerable<CatListingServiceModel>> Mine()
         {
@@ -39,6 +39,26 @@
             var id = await this.catService.Create(model.ImageUrl, model.Description, userId);
 
             return Created(nameof(this.Create), id);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(UpdateCatRequestModel model)
+        {
+            var userId = this.User.GetId();
+
+            var updated = await this.catService.Update
+                (
+                model.Id,
+                model.Description,
+                userId);
+
+            if (!updated)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+
         }
 
     }

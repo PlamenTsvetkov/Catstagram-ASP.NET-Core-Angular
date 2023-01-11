@@ -3,7 +3,6 @@
     using Catstagram.Server.Data;
     using Catstagram.Server.Data.Models;
     using Catstagram.Server.Features.Cats.Models;
-    using Microsoft.AspNetCore.Server.IIS.Core;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -55,5 +54,24 @@
                 UserUserName = c.User.UserName
             })
             .FirstOrDefaultAsync();
+
+        public async Task<bool> Update(int id, string description, string userId)
+        {
+            var cat = await this.data
+                .Cats
+                .Where(c => c.Id == id && c.UserId == userId)
+                .FirstOrDefaultAsync();
+
+            if (cat==null)
+            {
+                return false;
+            }
+
+            cat.Description = description;
+
+            await this.data.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

@@ -9,5 +9,7 @@
         public Task<IEnumerable<CatListingServiceModel>> ByUser(string userId);
 
         public Task<CatDetailsServiceModel> Details(int catId);
+
+        public Task<bool> Update(int id, string description, string userId);
     }
 }
