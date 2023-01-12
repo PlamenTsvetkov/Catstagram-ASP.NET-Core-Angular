@@ -2,6 +2,6 @@
 {
     public class WebConstants
     {
-        public const string Id = "{catId}";
+        public const string Id = "{id}";
     }
 }

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-Catstagram.Server-578DB1A6-DE73-404A-AFA5-DB5999E7D6BD</UserSecretsId>
   </PropertyGroup>

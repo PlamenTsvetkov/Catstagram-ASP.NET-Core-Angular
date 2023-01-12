@@ -10,6 +10,7 @@
     using Catstagram.Server.Features.Identity;
     using Catstagram.Server.Features.Cats;
     using Microsoft.OpenApi.Models;
+    using Catstagram.Server.Infrastructure.Services;
 
     public static class ServiceCollectionExtensions
     {
@@ -62,7 +63,8 @@
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
            return  services.AddTransient<IIdentityService, IdentityService>()
-                    .AddTransient<ICatService, CatService>();
+                            .AddScoped<ICurrentUserService, CurrentUserService>()
+                            .AddTransient<ICatService, CatService>();
         }
 
         public static IServiceCollection AddSwagger(this IServiceCollection services) 

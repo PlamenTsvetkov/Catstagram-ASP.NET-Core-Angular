@@ -1,52 +1,60 @@
 ﻿namespace Catstagram.Server.Features.Cats
 {
     using Microsoft.AspNetCore.Mvc;
-
-    using Catstagram.Server.Infrastructure.Extensions;
-    using Catstagram.Server.Features.Cats.Models;
     using Microsoft.AspNetCore.Authorization;
 
+    using Catstagram.Server.Features.Cats.Models;
+    using Catstagram.Server.Infrastructure.Services;
 
     using static Infrastructure.WebConstants;
+
     [Authorize]
     public class CatsController : ApiController
     {
         private readonly ICatService catService;
 
-        public CatsController(ICatService catService)
+        private readonly ICurrentUserService currentUser;
+
+        public CatsController(
+            ICatService catService, 
+            ICurrentUserService currentUser)
         {
             this.catService = catService;
+            this.currentUser = currentUser;
         }
 
 
         [HttpGet]
         public async Task<IEnumerable<CatListingServiceModel>> Mine()
         {
-            var userId = this.User.GetId();
+            var userId = this.currentUser.GetId();
 
             return await this.catService.ByUser(userId);
         }
 
+
         [HttpGet]
         [Route(Id)]
-        public async Task<ActionResult<CatDetailsServiceModel>> Details(int catId)
-        => await this.catService.Details(catId);
+        public async Task<ActionResult<CatDetailsServiceModel>> Details(int id)
+            => await this.catService.Details(id);
+
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult> Create(CreateCatRequestModel model)
         {
-            var userId = User.GetId();
+            var userId = this.currentUser.GetId();
 
             var id = await this.catService.Create(model.ImageUrl, model.Description, userId);
 
             return Created(nameof(this.Create), id);
         }
 
+
         [HttpPut]
         public async Task<ActionResult> Update(UpdateCatRequestModel model)
         {
-            var userId = this.User.GetId();
+            var userId = this.currentUser.GetId();
 
             var updated = await this.catService.Update
                 (
@@ -63,13 +71,14 @@
 
         }
 
+
         [HttpDelete]
         [Route(Id)]
-        public async Task<ActionResult> Delete(int catId)
+        public async Task<ActionResult> Delete(int id)
         {
-            var userId = this.User.GetId();
+            var userId = this.currentUser.GetId();
 
-            var deleted = await this.catService.Delete(catId, userId);
+            var deleted = await this.catService.Delete(id, userId);
 
             if (!deleted)
             {
@@ -77,7 +86,6 @@
             }
 
             return Ok();
-
         }
 
     }
