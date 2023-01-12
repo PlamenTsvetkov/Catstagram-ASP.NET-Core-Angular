@@ -4,12 +4,16 @@
     using Microsoft.AspNetCore.Identity;
     using System.Diagnostics.CodeAnalysis;
 
+   
+
     public class User : IdentityUser, IEntity
     {
         public User()
         {
             this.Cats = new HashSet<Cat>();
         }
+
+        public Profile Profile { get; set; }
 
 
         public DateTime CreatedOn { get; set; }

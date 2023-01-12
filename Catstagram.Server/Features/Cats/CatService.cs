@@ -35,6 +35,7 @@
         public async Task<IEnumerable<CatListingServiceModel>> ByUser(string userId)
        => await this.data.Cats
             .Where(c => c.UserId == userId)
+            .OrderByDescending(c=>c.CreatedOn)
             .Select(c => new CatListingServiceModel
             {
                 Id = c.Id,
