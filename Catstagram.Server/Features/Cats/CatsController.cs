@@ -13,21 +13,21 @@
     {
         private readonly ICatService catService;
 
-        private readonly ICurrentUserService currentUser;
+        private readonly ICurrentUserService currentUserService;
 
         public CatsController(
             ICatService catService, 
             ICurrentUserService currentUser)
         {
             this.catService = catService;
-            this.currentUser = currentUser;
+            this.currentUserService = currentUser;
         }
 
 
         [HttpGet]
         public async Task<IEnumerable<CatListingServiceModel>> Mine()
         {
-            var userId = this.currentUser.GetId();
+            var userId = this.currentUserService.GetId();
 
             return await this.catService.ByUser(userId);
         }
@@ -43,7 +43,7 @@
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult> Create(CreateCatRequestModel model)
         {
-            var userId = this.currentUser.GetId();
+            var userId = this.currentUserService.GetId();
 
             var id = await this.catService.Create(model.ImageUrl, model.Description, userId);
 
@@ -52,19 +52,20 @@
 
 
         [HttpPut]
-        public async Task<ActionResult> Update(UpdateCatRequestModel model)
+        [Route(Id)]
+        public async Task<ActionResult> Update(int id, UpdateCatRequestModel model)
         {
-            var userId = this.currentUser.GetId();
+            var userId = this.currentUserService.GetId();
 
-            var updated = await this.catService.Update
+            var result = await this.catService.Update
                 (
-                model.Id,
+                id,
                 model.Description,
                 userId);
 
-            if (!updated)
+            if (result.Failure)
             {
-                return BadRequest();
+                return BadRequest(result.Error);
             }
 
             return Ok();
@@ -76,13 +77,13 @@
         [Route(Id)]
         public async Task<ActionResult> Delete(int id)
         {
-            var userId = this.currentUser.GetId();
+            var userId = this.currentUserService.GetId();
 
-            var deleted = await this.catService.Delete(id, userId);
+            var result = await this.catService.Delete(id, userId);
 
-            if (!deleted)
+            if (result.Failure)
             {
-                return BadRequest();
+                return BadRequest(result.Error);
             }
 
             return Ok();

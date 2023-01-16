@@ -38,10 +38,10 @@
 
             if (result.Succeeded)
             {
-                return Ok();
+                return BadRequest(result.Errors);
             }
-
-            return BadRequest(result.Errors);
+            return Ok();
+            
         }
 
         [HttpPost]

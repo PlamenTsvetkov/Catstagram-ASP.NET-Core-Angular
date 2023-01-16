@@ -51,7 +51,8 @@
 
             builder
                 .Entity<User>()
-                .OwnsOne(u => u.Profile);
+                .OwnsOne(u => u.Profile)
+                .WithOwner();
 
             base.OnModelCreating(builder);
         }

@@ -1,11 +1,19 @@
-﻿namespace Catstagram.Server.Data.Models
+﻿namespace Catstagram.Server.Features.Profiles.Models
 {
+    using Catstagram.Server.Data.Models;
     using System.ComponentModel.DataAnnotations;
 
-    using static Validation.User;
+    using static Catstagram.Server.Data.Validation.User;
 
-    public class Profile
+    public class UpdateProfileRequestModel
     {
+        [EmailAddress]
+        public string Email { get; set; }
+
+
+        public string UserName { get; set; }
+
+
         [MaxLength(MaxNameLength)]
         public string Name { get; set; }
 
@@ -19,7 +27,6 @@
         [MaxLength(MaxBiographyLenght)]
         public string Biography { get; set; }
 
-       
         public Gender Gender { get; set; }
 
 

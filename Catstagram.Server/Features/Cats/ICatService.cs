@@ -1,6 +1,7 @@
 ﻿namespace Catstagram.Server.Features.Cats
 {
     using Catstagram.Server.Features.Cats.Models;
+    using Catstagram.Server.Infrastructure.Services;
 
     public interface ICatService
     {
@@ -10,8 +11,8 @@
 
        Task<CatDetailsServiceModel> Details(int catId);
 
-       Task<bool> Update(int id, string description, string userId);
+       Task<Result> Update(int id, string description, string userId);
 
-       Task<bool> Delete(int catId,string userId);
+       Task<Result> Delete(int catId,string userId);
     }
 }
