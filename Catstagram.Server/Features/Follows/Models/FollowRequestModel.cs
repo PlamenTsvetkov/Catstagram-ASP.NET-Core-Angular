@@ -2,5 +2,6 @@
 {
     public class FollowRequestModel
     {
+        public string UserId { get; set; }
     }
 }

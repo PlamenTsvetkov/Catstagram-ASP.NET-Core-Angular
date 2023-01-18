@@ -23,6 +23,8 @@
 
         public DbSet<Cat> Cats { get; init; }
 
+        public DbSet<Follow> Follows { get; init; }
+
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             this.ApplyAuditInformation();
@@ -53,6 +55,20 @@
                 .Entity<User>()
                 .OwnsOne(u => u.Profile)
                 .WithOwner();
+
+            builder
+                .Entity<Follow>()
+                .HasOne(u => u.User)
+                .WithMany()
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<Follow>()
+                .HasOne(u => u.Follower)
+                .WithMany()
+                .HasForeignKey(u => u.FollowerId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
         }

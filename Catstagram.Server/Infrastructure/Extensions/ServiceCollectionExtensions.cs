@@ -11,6 +11,8 @@
     using Microsoft.OpenApi.Models;
     using Catstagram.Server.Infrastructure.Services;
     using Catstagram.Server.Features.Profiles;
+    using Catstagram.Server.Features.Follows;
+    using Catstagram.Server.Features.Search;
 
     public static class ServiceCollectionExtensions
     {
@@ -65,7 +67,9 @@
            return  services.AddTransient<IIdentityService, IdentityService>()
                             .AddScoped<ICurrentUserService, CurrentUserService>()
                             .AddTransient<ICatService, CatService>()
-                            .AddTransient<IProfileService, ProfileService>();
+                            .AddTransient<IProfileService, ProfileService>()
+                            .AddTransient<ISearchService, SearchService>()
+                            .AddTransient<IFollowService, FollowService>();
         }
 
         public static IServiceCollection AddSwagger(this IServiceCollection services) 

@@ -6,6 +6,7 @@
 
     using Catstagram.Server.Data.Models;
     using Catstagram.Server.Features.Identity.Models;
+    using Microsoft.AspNetCore.Authorization;
 
     public class IdentityController : ApiController
     {
@@ -23,6 +24,7 @@
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route(nameof(Register))]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -45,6 +47,7 @@
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route(nameof(Login))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<object>> Login(LoginRequestModel model)

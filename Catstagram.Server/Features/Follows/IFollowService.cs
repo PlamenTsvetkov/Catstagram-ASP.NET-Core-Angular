@@ -1,6 +1,9 @@
 ﻿namespace Catstagram.Server.Features.Follows
 {
-    public class IFollowService
+    using Catstagram.Server.Infrastructure.Services;
+
+    public interface IFollowService
     {
+        Task<Result> Follow(string userId, string followerId);
     }
 }
