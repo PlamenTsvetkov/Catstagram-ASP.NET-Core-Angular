@@ -46,5 +46,12 @@
 
             return true;
         }
+
+        public async Task<bool> IsFollower(string userId, string followerId)
+       =>await this.data
+            .Follows
+            .AnyAsync(f=>f.UserId == userId && 
+                         f.FollowerId == followerId &&
+                         f.IsApproved );
     }
 }

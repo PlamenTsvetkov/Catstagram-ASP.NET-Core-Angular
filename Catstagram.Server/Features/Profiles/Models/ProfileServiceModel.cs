@@ -10,14 +10,6 @@
         public string ProfilePhotoUrl { get; set; }
 
 
-        public string WebSite { get; set; }
-
-        public string Biography { get; set; }
-
-
-        public string Gender { get; set; }
-
-
         public bool IsPrivate { get; set; }
     }
 }

@@ -19,20 +19,30 @@
         {
             this.data = data;
         }
-        public async Task<ProfileServiceModel> ByUser(string userId)
+        public async Task<ProfileServiceModel> ByUser(string userId, bool allInformation=false)
         => await this.data
-            .Users
-            .Where(u => u.Id == userId)
-            .Select(u => new ProfileServiceModel
-            {
-                Name = u.Profile.Name,
-                ProfilePhotoUrl = u.Profile.ProfilePhotoUrl,
-                WebSite = u.Profile.WebSite,
-                Biography = u.Profile.Biography,
-                Gender = u.Profile.Gender.ToString(),
-                IsPrivate = u.Profile.IsPrivate,
-            })
-            .FirstOrDefaultAsync();
+                     .Users
+                     .Where(u => u.Id == userId)
+                     .Select(u => allInformation   ?
+                     new PublicProfileServiceModel
+                     {
+                         Name = u.Profile.Name,
+                         ProfilePhotoUrl = u.Profile.ProfilePhotoUrl,
+                         WebSite = u.Profile.WebSite,
+                         Biography = u.Profile.Biography,
+                         Gender = u.Profile.Gender.ToString(),
+                         IsPrivate = u.Profile.IsPrivate,
+                     }
+                     :
+                     new ProfileServiceModel
+                     {
+                         Name = u.Profile.Name,
+                         ProfilePhotoUrl = u.Profile.ProfilePhotoUrl,
+                         IsPrivate = u.Profile.IsPrivate,
+                     })
+                     .FirstOrDefaultAsync();
+           
+
 
         public async Task<Result> Update(
             string userId, 
@@ -159,5 +169,12 @@
                 user.Profile.IsPrivate = isPrivate;
             }
         }
+
+        public async Task<bool> isPublic(string userId)
+        =>await this.data
+                .Users
+                .Where(u=>u.Id==userId)
+                .Select(u => !u.Profile.IsPrivate)
+                .FirstOrDefaultAsync();
     }
 }
